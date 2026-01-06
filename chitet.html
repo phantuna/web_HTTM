@@ -478,6 +478,97 @@
             <p class="text-sm text-gray-500 dark:text-gray-400">© 2023 RentHub Inc. All rights reserved.</p>
         </div>
     </footer>
+    <script src="asset/js/state.js"></script>
+<script src="asset/js/api.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", async () => {
+        // 1. Lấy ID từ URL
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id');
+
+        if (!id) return; // Nếu không có ID thì giữ nguyên hoặc redirect
+
+        // 2. Lấy dữ liệu (Đảm bảo gọi fetchData để có MOCK_DATA)
+        const data = await fetchData();
+        const item = data.find(p => p.id === id);
+
+        if (!item) {
+            alert("Không tìm thấy mặt bằng!");
+            return;
+        }
+
+        // 3. Binding dữ liệu vào HTML (Sử dụng DOM manipulation)
+        
+        // Title & Address
+        document.querySelector("h1").textContent = item.title;
+        document.querySelector("h1 + p").innerHTML = `<span class="material-symbols-outlined text-xl">location_on</span> ${item.address}`;
+        
+        // Breadcrumb (Tên cuối cùng)
+        const breadcrumbs = document.querySelectorAll("nav a");
+        if(breadcrumbs.length > 0) {
+            document.querySelector("nav span:last-child").textContent = item.title;
+        }
+
+        // Stats (Diện tích, Loại phòng...) - Tìm theo icon hoặc vị trí
+        // Cách an toàn nhất là tìm element chứa text "Diện tích" rồi lấy sibling
+        const stats = document.querySelectorAll(".bg-surface-light .flex.items-center.gap-3");
+        if(stats.length >= 4) {
+            stats[0].querySelector("p.text-lg").textContent = `${item.area} m²`;
+            stats[1].querySelector("p.text-lg").textContent = item.type === 'office' ? "Văn phòng" : "Kinh doanh";
+            // Các field khác nếu có trong data
+        }
+
+        // Giá tiền (Sidebar)
+        const priceEl = document.querySelector(".text-3xl.font-black.text-primary");
+        if(priceEl) priceEl.textContent = new Intl.NumberFormat('vi-VN').format(item.price);
+
+        // Ảnh (Main Image & Thumbnails)
+        // Set ảnh background cho div chính
+        const mainImgDiv = document.querySelector("[style*='background-image']");
+        if(mainImgDiv) mainImgDiv.style.backgroundImage = `url('${item.image}')`;
+        
+        // Mô tả
+        const descDiv = document.querySelector(".prose");
+        if(descDiv) {
+            descDiv.innerHTML = `<p>${item.description}</p>`;
+        }
+
+        // Reviews (Render động từ mảng reviews)
+        const reviewContainer = document.querySelector("#reviews .space-y-6");
+        const reviewSummary = document.querySelector("#reviews span.text-5xl"); // 4.8
+        
+        if (reviewContainer && item.reviews) {
+            if(reviewSummary) reviewSummary.textContent = item.rating;
+            
+            reviewContainer.innerHTML = ""; // Xóa review mẫu
+            
+            if(item.reviews.length === 0) {
+                reviewContainer.innerHTML = "<p class='text-gray-500 italic'>Chưa có đánh giá nào.</p>";
+            } else {
+                item.reviews.forEach(rv => {
+                    const rvHtml = `
+                        <div class="border-b border-gray-100 dark:border-gray-800 pb-6">
+                            <div class="flex items-start justify-between mb-2">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-gray-200 bg-cover bg-center" style="background-image: url('${rv.avatar}');"></div>
+                                    <div>
+                                        <h4 class="font-bold text-[#0d141b] dark:text-white">${rv.user}</h4>
+                                        <div class="flex text-yellow-400 text-xs">
+                                            ${'★'.repeat(rv.rating)}${'☆'.repeat(5-rv.rating)}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">${rv.comment}</p>
+                        </div>
+                    `;
+                    reviewContainer.innerHTML += rvHtml;
+                });
+            }
+        }
+    });
+</script>
 </body>
 
 </html>

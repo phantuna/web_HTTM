@@ -454,7 +454,28 @@
         console.error("Lỗi gọi API:", err);
     }
     }
+document.addEventListener("DOMContentLoaded", () => {
+        // Nút tìm kiếm chính
+        const searchBtn = document.querySelector("button[type='button'].bg-primary"); // Selector nút Tìm
+        const input = document.querySelector("input[placeholder*='Nhập quận']"); // Selector ô input
 
+        if (searchBtn && input) {
+            searchBtn.addEventListener("click", () => {
+                const keyword = input.value.trim();
+                // Chuyển hướng sang trang timkiem.html kèm keyword
+                window.location.href = `timkiem.html?keyword=${encodeURIComponent(keyword)}`;
+            });
+        }
+        
+        // Load data cho phần "Mặt bằng nổi bật" ở trang chủ
+        fetchData().then(data => {
+             // Lấy 6 item đầu tiên
+             window.rawData = data;
+             window.filteredData = data;
+             window.PAGE_SIZE = 6;
+             renderPage(); 
+        });
+    });
 </script>
 
 </body>

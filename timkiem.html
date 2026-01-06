@@ -96,7 +96,7 @@
       </nav>
       <div class="w-full md:w-[400px]">
         <div
-          id="search"
+          id="searchBox"
           class="relative flex items-center w-full h-10 rounded-lg focus-within:ring-2 focus-within:ring-primary/50 bg-white dark:bg-card-dark border border-border-light dark:border-border-dark overflow-hidden">
           <div class="grid place-items-center h-full w-10 text-slate-400">
             <span class="material-symbols-outlined text-[20px]">search</span>
@@ -324,7 +324,7 @@
         <!-- Results Header -->
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <h2 class="text-2xl font-bold text-slate-900 dark:text-white">
-            128 kết quả tại <span class="text-primary">Quận 1, TP.HCM</span>
+            <span class="text-primary"></span>
           </h2>
           <div class="flex items-center gap-2">
             <span class="text-sm text-slate-500 whitespace-nowrap">Sắp xếp theo:</span>
@@ -350,23 +350,24 @@
       </div>
     </div>
   </main>
-  <script src="asset/js/state.js"></script>
-  <script src="asset/js/render.js"></script>
-  <script src="asset/js/filter.js"></script>
-  <script src="asset/js/api.js"></script>
-  <script src="asset/js/main.js"></script>
+    <script src="asset/js/api.js"></script>
+    <script src="asset/js/state.js"></script>
+    <script src="asset/js/render.js"></script>
+    <script src="asset/js/filter.js"></script>
+    <script src="asset/js/main.js"></script>
 
-<script>
+  <script>
     async function fetchData() {
     try {
         const res = await fetch(API_URL);
         const data = await res.json();
 
-        rawData = data;
-        filteredData = [...rawData];
+        window.rawData = data;
+        window.filteredData = [...data];
+        window.currentPage = 1;
 
-        currentPage = 1;
-        renderPage();
+        if (typeof renderPage === "function") renderPage();
+        return data;
     } catch (err) {
         console.error("Lỗi gọi API:", err);
     }
