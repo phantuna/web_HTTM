@@ -1,4 +1,4 @@
-const API_URL = "https://script.google.com/macros/s/AKfycbw_SGZF7YOo3w8rmwJK6T0E6bOPdEEnZQH-VeUupV6nwdMOq_YbI9570w8FjULeL0Gn/exec";
+const API_URL = "..";
 
 function normalizeChoTotItem(item) {
   return {
