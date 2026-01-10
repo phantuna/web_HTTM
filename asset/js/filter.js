@@ -1,8 +1,15 @@
-/* ================= TIỆN ÍCH ================= */
+/* ================= TEXT NORMALIZE (QUAN TRỌNG) ================= */
+// bỏ dấu + lowerCase để so chuỗi tiếng Việt
+function normalizeText(s = "") {
+  return s
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+}
+
+/* ================= TIỀN TỆ ================= */
 function parseMoney(v) {
-  // "35,000,000" | "35tr" | "35.000.000" -> 35000000
-  const n = Number(String(v || "").replace(/[^\d]/g, ""));
-  return Number.isFinite(n) ? n : 0;
+  return Number(String(v || "").replace(/[^\d]/g, "")) || 0;
 }
 
 function formatMoney(n) {
@@ -11,14 +18,13 @@ function formatMoney(n) {
 
 /* ================= COLLECT FILTER ================= */
 function collectFilterState() {
-  const searchInput = document.getElementById("search");
-
   return {
-    keyword: searchInput?.value?.trim().toLowerCase() || "",
-
+    keyword: normalizeText(
+      document.getElementById("search")?.value || ""
+    ),
+    city: document.getElementById("citySelect")?.value || "",
     minPrice: parseMoney(document.getElementById("minPrice")?.value),
     maxPrice: parseMoney(document.getElementById("maxPrice")?.value) || 9e18,
-
     areas: Array.from(
       document.querySelectorAll("input[data-area]:checked")
     ).map(cb => cb.dataset.area),
@@ -27,26 +33,44 @@ function collectFilterState() {
 
 /* ================= APPLY FILTER ================= */
 function applyFilter() {
+  if (!Array.isArray(window.rawData)) {
+    console.warn("rawData chưa sẵn sàng");
+    return;
+  }
+
   const f = collectFilterState();
 
   window.filteredData = window.rawData.filter(item => {
 
-    /* ===== 1. KEYWORD ===== */
+    /* ===== CITY ===== */
+    if (f.city) {
+      const region = normalizeText(item.region || "");
+
+      const cityMap = {
+        hcm: ["ho chi minh", "tp ho chi minh", "hcm"],
+        hn: ["ha noi"],
+        dn: ["da nang"],
+        bd: ["binh duong"],
+      };
+
+      const allow = cityMap[f.city] || [];
+      if (!allow.some(k => region.includes(k))) return false;
+    }
+
+    /* ===== KEYWORD ===== */
     if (f.keyword) {
-      const text = `
+      const text = normalizeText(`
         ${item.title || ""}
         ${item.street || ""}
         ${item.ward || ""}
         ${item.district || ""}
         ${item.region || ""}
-        ${item.category || ""}
-        ${item.group || ""}
-      `.toLowerCase();
+      `);
 
       if (!text.includes(f.keyword)) return false;
     }
 
-    /* ===== 2. PRICE ===== */
+    /* ===== PRICE ===== */
     const price =
       Number(item.price) ||
       parseMoney(item.price_string) ||
@@ -54,8 +78,8 @@ function applyFilter() {
 
     if (price < f.minPrice || price > f.maxPrice) return false;
 
-    /* ===== 3. AREA ===== */
-    if (f.areas.length > 0) {
+    /* ===== AREA ===== */
+    if (f.areas.length) {
       const area = Number(item.area_m2) || 0;
       let ok = false;
 
@@ -65,7 +89,6 @@ function applyFilter() {
         if (a === "50-80" && area > 50 && area <= 80) ok = true;
         if (a === "80+" && area > 80) ok = true;
       }
-
       if (!ok) return false;
     }
 
@@ -73,10 +96,10 @@ function applyFilter() {
   });
 
   window.currentPage = 1;
-  if (typeof renderPage === "function") renderPage();
+  renderPage?.();
 }
 
-/* ================= PRICE INPUT HANDLING ================= */
+/* ================= PRICE INPUT ================= */
 document.addEventListener("DOMContentLoaded", () => {
   const minEl = document.getElementById("minPrice");
   const maxEl = document.getElementById("maxPrice");
@@ -93,5 +116,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   maxEl.addEventListener("blur", () => {
     maxEl.value = formatMoney(parseMoney(maxEl.value));
+  });
+});
+
+/* ================= CITY SELECT ================= */
+document.addEventListener("DOMContentLoaded", () => {
+  const citySelect = document.getElementById("citySelect");
+  if (!citySelect) return;
+
+  citySelect.addEventListener("change", () => {
+    window.currentPage = 1;
+    applyFilter();
   });
 });

@@ -104,85 +104,78 @@
             </div>
         </section>
         <section class="relative -mt-16 px-4 sm:px-6 lg:px-8 z-20">
-  <div
-    class="max-w-[1200px] mx-auto bg-surface-light dark:bg-surface-dark rounded-2xl shadow-xl border border-border-light dark:border-border-dark p-4 md:p-3">
+            <div
+                class="max-w-[1200px] mx-auto bg-surface-light dark:bg-surface-dark rounded-2xl shadow-xl border border-border-light dark:border-border-dark p-4 md:p-3">
 
-    <form id="searchForm" class="flex flex-col xl:flex-row gap-3">
+                <form id="searchForm" class="flex flex-col xl:flex-row gap-3">
 
-      <!-- ===== KHU VỰC (CITY) ===== -->
-      <div class="w-full xl:w-56 relative">
-        <select
-          id="city"
-          class="w-full px-4 py-3 bg-primary text-white font-bold rounded-full focus:ring-2 focus:ring-blue-400 focus:outline-none">
-          <option value="tp hồ chí minh" selected>TP Hồ Chí Minh</option>
-          <option value="hà nội">Hà Nội</option>
-          <option value="đà nẵng">Đà Nẵng</option>
-          <option value="bình dương">Bình Dương</option>
-        </select>
-      </div>
+                    <!-- ===== KHU VỰC (CITY) ===== -->
+                    <div class="w-full xl:w-56 relative">
+                        <select id="citySelect"
+                            class="w-full px-4 py-3 bg-primary text-white font-bold rounded-full focus:ring-2 focus:ring-blue-400 focus:outline-none">>
+                            <option value="">Toàn quốc</option>
+                            <option value="hcm">TP Hồ Chí Minh</option>
+                            <option value="hn">Hà Nội</option>
+                            <option value="dn">Đà Nẵng</option>
+                            <option value="bd">Bình Dương</option>
+                        </select>
 
-      <!-- ===== KEYWORD ===== -->
-      <div class="flex-1 relative min-w-0">
-        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-          <span class="material-symbols-outlined text-text-sub-light">search</span>
-        </div>
-        <input
-          id="search"
-          type="text"
-          placeholder="Nhập quận, tên tòa nhà, hoặc địa chỉ..."
-          class="block w-full pl-10 pr-3 py-3 rounded-xl border bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-primary" />
-      </div>
+                    </div>
 
-      <!-- ===== LOẠI HÌNH ===== -->
-      <div class="w-full xl:w-40">
-        <select
-          id="type"
-          class="block w-full px-3 py-3 rounded-xl border bg-slate-50 dark:bg-slate-800">
-          <option value="">Loại hình</option>
-          <option value="Đất">Đất</option>
-          <option value="Văn phòng">Văn phòng</option>
-          <option value="Cửa hàng">Cửa hàng</option>
-        </select>
-      </div>
+                    <!-- ===== KEYWORD ===== -->
+                    <div class="flex-1 relative min-w-0">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <span class="material-symbols-outlined text-text-sub-light">search</span>
+                        </div>
+                        <input id="search" type="text" placeholder="Nhập quận, tên tòa nhà, hoặc địa chỉ..."
+                            class="block w-full pl-10 pr-3 py-3 rounded-xl border bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-primary" />
+                    </div>
 
-      <!-- ===== GIÁ ===== -->
-      <div class="w-full xl:w-36">
-        <select
-          id="price"
-          class="block w-full px-3 py-3 rounded-xl border bg-slate-50 dark:bg-slate-800">
-          <option value="">Mức giá</option>
-          <option value="0-1000000000">&lt; 1 tỷ</option>
-          <option value="1000000000-5000000000">1 – 5 tỷ</option>
-          <option value="5000000000-10000000000">5 – 10 tỷ</option>
-          <option value="10000000000-99999999999">&gt; 10 tỷ</option>
-        </select>
-      </div>
+                    <!-- ===== LOẠI HÌNH ===== -->
+                    <div class="w-full xl:w-40">
+                        <select id="type"
+                            class="block w-full px-3 py-3 rounded-xl border bg-slate-50 dark:bg-slate-800">
+                            <option value="">Loại hình</option>
+                            <option value="Đất">Đất</option>
+                            <option value="Văn phòng">Văn phòng</option>
+                            <option value="Cửa hàng">Cửa hàng</option>
+                        </select>
+                    </div>
 
-      <!-- ===== DIỆN TÍCH ===== -->
-      <div class="w-full xl:w-36">
-        <select
-          id="area"
-          class="block w-full px-3 py-3 rounded-xl border bg-slate-50 dark:bg-slate-800">
-          <option value="">Diện tích</option>
-          <option value="0-30">&lt; 30m²</option>
-          <option value="30-100">30 – 100m²</option>
-          <option value="100-500">100 – 500m²</option>
-          <option value="500-99999">&gt; 500m²</option>
-        </select>
-      </div>
+                    <!-- ===== GIÁ ===== -->
+                    <div class="w-full xl:w-36">
+                        <select id="price"
+                            class="block w-full px-3 py-3 rounded-xl border bg-slate-50 dark:bg-slate-800">
+                            <option value="">Mức giá</option>
+                            <option value="0-1000000000">&lt; 1 tỷ</option>
+                            <option value="1000000000-5000000000">1 – 5 tỷ</option>
+                            <option value="5000000000-10000000000">5 – 10 tỷ</option>
+                            <option value="10000000000-99999999999">&gt; 10 tỷ</option>
+                        </select>
+                    </div>
 
-      <!-- ===== NÚT TÌM ===== -->
-      <button
-        id="btnSearch"
-        type="button"
-        class="w-full xl:w-auto px-6 py-3 bg-primary text-white rounded-xl font-bold shadow-lg flex items-center justify-center gap-2">
-        <span class="material-symbols-outlined">search</span>
-        Tìm kiếm
-      </button>
+                    <!-- ===== DIỆN TÍCH ===== -->
+                    <div class="w-full xl:w-36">
+                        <select id="area"
+                            class="block w-full px-3 py-3 rounded-xl border bg-slate-50 dark:bg-slate-800">
+                            <option value="">Diện tích</option>
+                            <option value="0-30">&lt; 30m²</option>
+                            <option value="30-100">30 – 100m²</option>
+                            <option value="100-500">100 – 500m²</option>
+                            <option value="500-99999">&gt; 500m²</option>
+                        </select>
+                    </div>
 
-    </form>
-  </div>
-</section>
+                    <!-- ===== NÚT TÌM ===== -->
+                    <button id="btnSearch" type="button"
+                        class="w-full xl:w-auto px-6 py-3 bg-primary text-white rounded-xl font-bold shadow-lg flex items-center justify-center gap-2">
+                        <span class="material-symbols-outlined">search</span>
+                        Tìm kiếm
+                    </button>
+
+                </form>
+            </div>
+        </section>
 
         <section class="py-12 md:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-2xl font-bold mb-8 text-text-main-light dark:text-text-main-dark">Khám phá theo loại hình
@@ -371,14 +364,7 @@
                 });
             }
 
-            // Load data cho phần "Mặt bằng nổi bật" ở trang chủ
-            fetchData().then(data => {
-                // Lấy 6 item đầu tiên
-                window.rawData = data;
-                window.filteredData = data;
-                window.PAGE_SIZE = 6;
-                renderPage();
-            });
+           
         });
     </script>
 

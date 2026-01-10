@@ -60,7 +60,8 @@
               fill="currentColor"></path>
           </svg>
         </div>
-        <h2 href="Trangchu.html" class="hidden sm:block text-lg font-bold leading-tight tracking-[-0.015em] text-slate-900 dark:text-white">
+        <h2 href="Trangchu.html"
+          class="hidden sm:block text-lg font-bold leading-tight tracking-[-0.015em] text-slate-900 dark:text-white">
           RentalSpace</h2>
       </div>
       <div class="flex flex-1 justify-end gap-8 items-center">
@@ -87,16 +88,14 @@
   <main class="flex-1 max-w-[1440px] mx-auto w-full px-4 lg:px-10 py-6">
     <!-- Top Search & Breadcrumbs -->
     <div class="flex flex-col md:flex-row gap-4 justify-between items-start md:items-center mb-6">
-      <nav class="flex flex-wrap gap-2 items-center text-sm text-slate-500 dark:text-slate-400">
-        <a class="hover:text-primary hover:underline" href="#">Trang chủ</a>
-        <span class="material-symbols-outlined text-[16px]">chevron_right</span>
-        <a class="hover:text-primary hover:underline" href="#">TP.HCM</a>
-        <span class="material-symbols-outlined text-[16px]">chevron_right</span>
-        <span class="text-slate-900 dark:text-white font-medium">Quận 1</span>
+      <nav class="text-sm text-slate-500 mb-4">
+        <a href="Trangchu.html" class="hover:text-primary">Trang chủ</a> /
+        <span>Thuê</span> /
+        <span id="bc-region"></span> /
+        <span id="bc-district" class="font-medium text-slate-900"></span>
       </nav>
       <div class="w-full md:w-[400px]">
-        <div
-          id="searchBox"
+        <div id="searchBox"
           class="relative flex items-center w-full h-10 rounded-lg focus-within:ring-2 focus-within:ring-primary/50 bg-white dark:bg-card-dark border border-border-light dark:border-border-dark overflow-hidden">
           <div class="grid place-items-center h-full w-10 text-slate-400">
             <span class="material-symbols-outlined text-[20px]">search</span>
@@ -146,15 +145,13 @@
                 </div>
               </div>
               <div class="flex gap-2">
-                <input
-                  id="minPrice"
+                <input id="minPrice"
                   class="w-full text-sm p-2 rounded border border-border-light dark:border-border-dark bg-slate-50 dark:bg-slate-800 text-center text-slate-700 dark:text-slate-200"
-                   type="text" value="0" />
+                  type="text" value="0" />
                 <span class="text-slate-400 self-center">-</span>
-                <input
-                  id="maxPrice"
+                <input id="maxPrice"
                   class="w-full text-sm p-2 rounded border border-border-light dark:border-border-dark bg-slate-50 dark:bg-slate-800 text-center text-slate-700 dark:text-slate-200"
-                   type="text" value="35,000,000" />
+                  type="text" value="35,000,000" />
               </div>
             </div>
           </details>
@@ -168,8 +165,7 @@
             <div class="pt-2 pb-4 space-y-2">
               <label class="flex items-center gap-3 cursor-pointer group/item">
                 <div class="relative flex items-center">
-                  <input
-                    data-area="0-30"
+                  <input data-area="0-30"
                     class="peer size-4 appearance-none rounded border border-slate-300 dark:border-slate-600 checked:bg-primary checked:border-primary transition-all"
                     type="checkbox" />
                   <span
@@ -181,8 +177,7 @@
               </label>
               <label class="flex items-center gap-3 cursor-pointer group/item">
                 <div class="relative flex items-center">
-                  <input checked=""
-                    data-area="30-50"
+                  <input checked="" data-area="30-50"
                     class="peer size-4 appearance-none rounded border border-slate-300 dark:border-slate-600 checked:bg-primary checked:border-primary transition-all"
                     type="checkbox" />
                   <span
@@ -194,8 +189,7 @@
               </label>
               <label class="flex items-center gap-3 cursor-pointer group/item">
                 <div class="relative flex items-center">
-                  <input
-                    data-area="50-80"
+                  <input data-area="50-80"
                     class="peer size-4 appearance-none rounded border border-slate-300 dark:border-slate-600 checked:bg-primary checked:border-primary transition-all"
                     type="checkbox" />
                   <span
@@ -207,8 +201,7 @@
               </label>
               <label class="flex items-center gap-3 cursor-pointer group/item">
                 <div class="relative flex items-center">
-                  <input
-                    data-area="80+"
+                  <input data-area="80+"
                     class="peer size-4 appearance-none rounded border border-slate-300 dark:border-slate-600 checked:bg-primary checked:border-primary transition-all"
                     type="checkbox" />
                   <span
@@ -313,8 +306,7 @@
             </div>
           </details>
         </div>
-        <button
-          id="applyFilterBtn"
+        <button id="applyFilterBtn"
           class="w-full py-3 bg-primary text-white font-bold rounded-lg shadow-md hover:bg-primary-hover transition-colors">
           Áp dụng bộ lọc
         </button>
@@ -350,12 +342,37 @@
       </div>
     </div>
   </main>
-    <script src="asset/js/api.js"></script>
-    <script src="asset/js/state.js"></script>
-    <script src="asset/js/render.js"></script>
-    <script src="asset/js/filter.js"></script>
-    <script src="asset/js/main.js"></script>
+  <script src="asset/js/api.js"></script>
+  <script src="asset/js/state.js"></script>
+  <script src="asset/js/render.js"></script>
+  <script src="asset/js/filter.js"></script>
+  <script src="asset/js/main.js"></script>
 
 </body>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const params = new URLSearchParams(window.location.search);
+    const keyword = params.get("keyword");
+
+    const regionEl = document.getElementById("bc-region");
+    const districtEl = document.getElementById("bc-district");
+
+    if (!keyword) return;
+
+    const decoded = decodeURIComponent(keyword).trim();
+
+    // Nếu có dấu phẩy → "Quận 1, TP Hồ Chí Minh"
+    if (decoded.includes(",")) {
+      const parts = decoded.split(",").map(s => s.trim());
+      if (districtEl) districtEl.textContent = parts[0];
+      if (regionEl) regionEl.textContent = parts[1];
+    }
+    // Nếu chỉ có 1 từ → "Hà Nội", "Tây Hồ"
+    else {
+      if (districtEl) districtEl.textContent = "";
+      if (regionEl) regionEl.textContent = decoded;
+    }
+  });
+</script>
 
 </html>

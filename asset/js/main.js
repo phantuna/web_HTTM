@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
     });
   }
-
+console.log(window.rawData[0]);
   const applyBtn = document.getElementById("applyFilterBtn");
   if (applyBtn && typeof applyFilter === "function") {
     applyBtn.addEventListener("click", () => {
