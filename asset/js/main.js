@@ -1,39 +1,74 @@
 // --- file: asset/js/main.js ---
 
 document.addEventListener("DOMContentLoaded", async () => {
-  // Trang chủ: 6 item/trang, Trang tìm kiếm: 9 item/trang
   const path = window.location.pathname.toLowerCase();
   const isSearchPage = path.includes("timkiem");
-  window.PAGE_SIZE = isSearchPage ? 9 : 6;
 
-  // Lấy keyword từ URL (hỗ trợ cả ?keyword= và ?q=)
+  // ===============================
+  // 1. PAGE SIZE
+  // ===============================
+  window.PAGE_SIZE = isSearchPage ? 9 : 6;
+  window.currentPage = 1;
+
+  // ===============================
+  // 2. ĐẢM BẢO filterState TỒN TẠI
+  // ===============================
+  if (!window.filterState) {
+    window.filterState = {
+      keyword: "",
+      minPrice: null,
+      maxPrice: null,
+      areas: [],
+      types: [],
+      amenities: []
+    };
+  }
+
+  // ===============================
+  // 3. LẤY KEYWORD TỪ URL
+  // ===============================
   const params = new URLSearchParams(window.location.search);
-  const kw = (params.get("keyword") || params.get("q") || "").trim();
+  const keyword = (params.get("keyword") || params.get("q") || "").trim();
+
+  window.filterState.keyword = keyword;
 
   const searchInput = document.getElementById("search");
   if (searchInput) {
-    searchInput.value = kw;
-    window.filterState.keyword = kw;
+    searchInput.value = keyword;
   }
 
-  // Gọi API (fetchData nằm trong api.js)
+  // ===============================
+  // 4. LOAD DATA
+  // ===============================
   if (typeof fetchData === "function") {
     await fetchData();
   }
 
-  // Nếu có filter (trang tìm kiếm), thì applyFilter để ra đúng kết quả theo keyword
-  if (typeof applyFilter === "function" && isSearchPage) {
-    applyFilter();
-  } else {
-    window.currentPage = 1;
-    if (typeof renderPage === "function") renderPage();
+  // Nếu fetchData không set filteredData → fallback
+  if (!window.filteredData || !Array.isArray(window.filteredData)) {
+    window.filteredData = window.rawData || [];
   }
 
-  // Wire events
+  // ===============================
+  // 5. ÁP DỤNG FILTER
+  // ===============================
+  if (isSearchPage && typeof applyFilter === "function") {
+    applyFilter();
+  } else if (typeof renderPage === "function") {
+    renderPage();
+  }
+
+  // ===============================
+  // 6. WIRE EVENTS
+  // ===============================
   if (searchInput && typeof applyFilter === "function") {
-    searchInput.addEventListener("input", () => {
-      window.currentPage = 1;
-      applyFilter();
+    searchInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        window.currentPage = 1;
+        window.filterState.keyword = searchInput.value.trim();
+        applyFilter();
+      }
     });
   }
 

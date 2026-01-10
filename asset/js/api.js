@@ -9,6 +9,7 @@ function normalizeChoTotItem(item) {
     price_string: item.price_string,
     area_m2: Number(item.area_m2) || 0,
     district: item.district,
+    region: item.region, 
     ward: item.ward,
     street: item.street,
     seller: item.seller,
@@ -16,7 +17,8 @@ function normalizeChoTotItem(item) {
     lat: item.lat,
     lng: item.lng,
     date: item.date,
-    category: item.category
+    category: item.category,
+    group: item.group
   };
 }
 

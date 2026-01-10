@@ -74,7 +74,7 @@
                                 fill="currentColor" fill-rule="evenodd"></path>
                         </svg>
                     </div>
-                    <h2 class="text-xl font-bold leading-tight tracking-[-0.015em]">RentHub</h2>
+                    <h2 href="Trangchu.html" class="text-xl font-bold leading-tight tracking-[-0.015em]">RentHub</h2>
                 </a>
                 <div
                     class="hidden md:flex items-center bg-[#e7edf3] dark:bg-surface-dark border dark:border-gray-700 rounded-lg h-10 w-80 px-3 gap-2">
@@ -108,18 +108,13 @@
     </header>
     <main class="flex-grow w-full max-w-[1280px] mx-auto px-4 lg:px-10 py-6">
         <!-- Breadcrumbs -->
-        <nav class="flex flex-wrap gap-2 pb-6 text-sm">
-            <a class="text-[#4c739a] dark:text-gray-400 hover:text-primary transition-colors font-medium" href="#">Trang
-                chủ</a>
-            <span class="text-[#4c739a] dark:text-gray-500 font-medium">/</span>
-            <a class="text-[#4c739a] dark:text-gray-400 hover:text-primary transition-colors font-medium"
-                href="#">Thuê</a>
-            <span class="text-[#4c739a] dark:text-gray-500 font-medium">/</span>
-            <a class="text-[#4c739a] dark:text-gray-400 hover:text-primary transition-colors font-medium" href="#">TP.
-                Hồ Chí Minh</a>
-            <span class="text-[#4c739a] dark:text-gray-500 font-medium">/</span>
-            <span id="breadcrumb-title"class="text-[#0d141b] dark:text-gray-200 font-medium"></span>
+        <nav class="text-sm text-slate-500 mb-4">
+            <a href="Trangchu.html" class="hover:text-primary">Trang chủ</a> /
+            <span>Thuê</span> /
+            <span id="bc-region"></span> /
+            <span id="bc-district" class="font-medium text-slate-900"></span>
         </nav>
+
         <!-- Gallery Section (1 Main + 4 Thumbnails style) -->
         <section class="grid grid-cols-1 md:grid-cols-4 gap-2 h-[300px] md:h-[450px] mb-8 overflow-hidden rounded-xl">
             <!-- Main Image -->
@@ -272,7 +267,7 @@
                     </div>
                 </div>
                 <!-- Reviews Section -->
-                
+
             </div>
             <!-- Right Column: Sticky Sidebar -->
             <div class="lg:w-[380px] shrink-0">
@@ -294,14 +289,15 @@
                                 style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAR-9ElLXCG2mnlPSLaU-diNcz9jqKUPYCKz7Q_nIM9N5BN2_VEu-E1LPCrBbyuHUpyHqC0gahu0UIo3t3RYCiM0NSMzzPlWLwLJKIx0_Q2uDC9PPX4kUNDTrHIMqLvYc2IRHPqaLqBXcxez0Dm0pgSwF_cCS3MWMAZuS9BQbAE5CqT04NiVRpe3mayxNKGi5mE17kk9bezgOu-pfO-4MW5VA-rIqkHCzPKDquVYLFVM_LtvS9u5wnwl5pW5RGHD9qXxchrDOSW4bgx');">
                             </div>
                             <div class="flex-1 min-w-0">
-                                <h4 id="detail-seller" class="font-bold text-[#0d141b] dark:text-white text-base truncate">
+                                <h4 id="detail-seller"
+                                    class="font-bold text-[#0d141b] dark:text-white text-base truncate">
                                 </h4>
                                 <p class="text-xs text-gray-500 dark:text-gray-400 truncate">Senior Agent - RentHub
                                     Premier</p>
                                 <div
                                     class="flex items-center gap-1 text-xs text-yellow-600 dark:text-yellow-500 font-medium mt-1">
                                     <span id="detail-rating" class="material-symbols-outlined text-sm">star</span>
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -359,6 +355,11 @@
             await fetchData();
 
             const item = window.rawData.find(x => String(x.id) === String(id));
+            const regionEl = document.getElementById("bc-region");
+            const districtEl = document.getElementById("bc-district");
+
+            if (regionEl) regionEl.textContent = item.region || "";
+            if (districtEl) districtEl.textContent = item.district || "";
 
             if (!item) {
                 document.body.innerHTML = "<h2>Không tìm thấy tin đăng</h2>";
