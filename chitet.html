@@ -118,48 +118,20 @@
             <a class="text-[#4c739a] dark:text-gray-400 hover:text-primary transition-colors font-medium" href="#">TP.
                 Hồ Chí Minh</a>
             <span class="text-[#4c739a] dark:text-gray-500 font-medium">/</span>
-            <span class="text-[#0d141b] dark:text-gray-200 font-medium">Sunny Commercial Space</span>
+            <span id="breadcrumb-title"class="text-[#0d141b] dark:text-gray-200 font-medium"></span>
         </nav>
         <!-- Gallery Section (1 Main + 4 Thumbnails style) -->
         <section class="grid grid-cols-1 md:grid-cols-4 gap-2 h-[300px] md:h-[450px] mb-8 overflow-hidden rounded-xl">
             <!-- Main Image -->
             <div class="col-span-1 md:col-span-2 row-span-2 relative group cursor-pointer">
-                <div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                <div id="main-image"
+                    class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
                     data-alt="Modern spacious commercial office with large windows and sunlight"
                     style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBhgw7old0thWjzPteRVAeyFQVV_rk5icXCvBEdQFjEyNNALJE37I7Cjtjr3quKwyfWb-idsbsEQEU7t-NqSrkzF_T37QU0QtpG4ifiak_A_lQmJ7qVcEgPyvAa9KqKrdnOFHtx2ZCLzvGbIqmke4Vw3WLNb6kyS5Fc5g5T8pJVY6lJ_aOF7mRuA7BlmCYGZc2FIc8eYe6H5vJORY8H1xv-KBeaX_67HdWkd4BUMl_yqsE7aORe0dVofKLt8dd_I9fL3VZE75HFQUy5');">
                 </div>
                 <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
             </div>
             <!-- Side Images -->
-            <div class="hidden md:block col-span-1 row-span-1 relative group cursor-pointer">
-                <div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                    data-alt="Close up of meeting room with glass walls"
-                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA7DXedv3abGaAy-sDGmxMW6ePTJj4T5aWbo-OQLHUdU6lNCBFnyugekERPe6_7uPleWQSBio1M7J12xgPHdrLNwh5o1NwuaTe6n7YWE_mOPSBFDZtVI3TkwHhAk_UE5Ar345oqc_HB7-Bbj1KeZmnMBCQQq1wTDODL7rkb6B0Yctz0jkFQ7DUYcaPdxY_sJvNeKQE-jgfEWcnUB2X4IkWUymjtbtCk0DSps7FMApRJdMPAPPcT5ZzcVpyoJnnDzrT_D2WRFOxUYR5C');">
-                </div>
-            </div>
-            <div class="hidden md:block col-span-1 row-span-1 relative group cursor-pointer">
-                <div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                    data-alt="Modern reception area with wooden accents"
-                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDjKQI6G1Myus5C7qUI7W57c3ZiKMzELitj4FCHS1cUQ1GhFtVYEhafzMqfsbYQVQ5EkBNt7Q3YjfLMFVhCmzBYHwC6d0IrN1ipujHcJvGSOlT6AopP4zo0QX3U8-PtQOVWW_yMRXUzzfqs3ISA8AGtzMd0FeDRFsv7v5YXveaKptFiMWmGYBl0Xc_4iEGtdnyCtKnuiotnfpOo5YcVJO_BAVQ2IYI6VcJsXi8F425PDta9u96lzaONqG5nwaHHsQ-pYDWpoDDixJ_c');">
-                </div>
-            </div>
-            <div class="hidden md:block col-span-1 row-span-1 relative group cursor-pointer">
-                <div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                    data-alt="Open workspace with desks and chairs"
-                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCwevh4B4GQySaLp3IIzwa1AoXp0-ecSp9d0Al681pByF3dzpEAV6zoNHBar-21FbYvvqEV_EI97QhCzvQMjLPMAS4y6ikLNKD4NvILGsXRSjZ_bClLkLZg-cMj5L7xWjhvGFDAEKXBMn_yQlXYEmzSIljdqHpi_p6zgxEN5uv41wp03STU7UwTRHFOIHZ837P6LayxYHer65q9ITGoRCnjhK6rB5Jqv2Fyp1mXldwur63ocmziac1-Yfb7q-w4UNDyvlFBZI_chtKZ');">
-                </div>
-            </div>
-            <div class="hidden md:block col-span-1 row-span-1 relative group cursor-pointer">
-                <div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                    data-alt="View from the office window overlooking the city"
-                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD8gJRLOZVpQCz09jiPGHUbpxwu-w-Q9liCyK4liWTs3IOrM9ij3tLRxh3OAJBH-ZUHIQXGdjl4IwcIKdHy3tONCcyWoBiebUDPlwc1vevgJbLZeFCMfNZwE5lGcJ_NgTxYZlQBt4zUsuGG4hjS-eRb2nuo6sPlHwbLHqRpGqxbcsSxvO2Y7oJoiPtgcymnzKU_xzAcqR3AeKW-bpwrcXYBUVKdScxKiQpC-9-8FPhxp8qq8YIm2STcNj373CWS4-W53xkCjdapfrCP');">
-                </div>
-                <button
-                    class="absolute bottom-4 right-4 bg-white dark:bg-surface-dark text-xs font-bold px-3 py-2 rounded-lg shadow-lg flex items-center gap-2 hover:bg-gray-100 transition-colors">
-                    <span class="material-symbols-outlined text-base">grid_view</span>
-                    Xem tất cả 24 ảnh
-                </button>
-            </div>
         </section>
         <!-- Main Content Area -->
         <div class="flex flex-col lg:flex-row gap-8">
@@ -179,11 +151,13 @@
                             Đã xác minh
                         </span>
                     </div>
-                    <h1 class="text-3xl md:text-4xl font-extrabold text-[#0d141b] dark:text-white mb-2 leading-tight">
-                        Sunny Commercial Space in District 1</h1>
-                    <p class="text-[#4c739a] dark:text-gray-400 text-base md:text-lg flex items-center gap-1">
-                        <span class="material-symbols-outlined text-xl">location_on</span>
-                        123 Nguyễn Huệ, P. Bến Nghé, Quận 1, TP. HCM
+                    <h1 id="detail-title"
+                        class="text-3xl md:text-4xl font-extrabold text-[#0d141b] dark:text-white mb-2 leading-tight">
+                    </h1>
+                    <p id="detail-address"
+                        class="text-[#4c739a] dark:text-gray-400 text-base md:text-lg flex items-center gap-1">
+                        <span class="material-symbols-outlined text-xl"></span>
+
                     </p>
                 </div>
                 <!-- Key Stats -->
@@ -196,7 +170,7 @@
                         <div>
                             <p class="text-xs text-gray-500 dark:text-gray-400 font-medium uppercase tracking-wider">
                                 Diện tích</p>
-                            <p class="text-lg font-bold text-[#0d141b] dark:text-white">80 m²</p>
+                            <p id="detail-area" class="text-lg font-bold text-[#0d141b] dark:text-white"></p>
                         </div>
                     </div>
                     <div class="flex items-center gap-3">
@@ -298,115 +272,7 @@
                     </div>
                 </div>
                 <!-- Reviews Section -->
-                <div class="pt-8 border-t border-gray-100 dark:border-gray-800" id="reviews">
-                    <div class="flex items-center justify-between mb-6">
-                        <h3 class="text-2xl font-bold text-[#0d141b] dark:text-white">Đánh giá từ người thuê</h3>
-                        <button
-                            class="text-primary font-bold text-sm border border-primary/30 px-4 py-2 rounded-lg hover:bg-primary/5 transition-colors">
-                            Viết đánh giá
-                        </button>
-                    </div>
-                    <!-- Review Summary -->
-                    <div
-                        class="bg-surface-light dark:bg-surface-dark p-6 rounded-xl border border-gray-100 dark:border-gray-800 mb-8 flex flex-col md:flex-row items-center gap-8">
-                        <div class="flex flex-col items-center justify-center min-w-[140px]">
-                            <span class="text-5xl font-extrabold text-[#0d141b] dark:text-white">4.8</span>
-                            <div class="flex text-yellow-400 my-2">
-                                <span class="material-symbols-outlined fill-current">star</span>
-                                <span class="material-symbols-outlined fill-current">star</span>
-                                <span class="material-symbols-outlined fill-current">star</span>
-                                <span class="material-symbols-outlined fill-current">star</span>
-                                <span class="material-symbols-outlined fill-current text-gray-300">star</span>
-                            </div>
-                            <span class="text-sm text-gray-500">24 đánh giá</span>
-                        </div>
-                        <!-- Bars -->
-                        <div class="flex-1 w-full space-y-2">
-                            <div class="flex items-center gap-3 text-sm">
-                                <span class="w-3 text-right font-bold text-gray-600 dark:text-gray-400">5</span>
-                                <div class="flex-1 h-2 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
-                                    <div class="h-full bg-yellow-400 w-[70%] rounded-full"></div>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-3 text-sm">
-                                <span class="w-3 text-right font-bold text-gray-600 dark:text-gray-400">4</span>
-                                <div class="flex-1 h-2 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
-                                    <div class="h-full bg-yellow-400 w-[20%] rounded-full"></div>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-3 text-sm">
-                                <span class="w-3 text-right font-bold text-gray-600 dark:text-gray-400">3</span>
-                                <div class="flex-1 h-2 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
-                                    <div class="h-full bg-yellow-400 w-[5%] rounded-full"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Review List -->
-                    <div class="space-y-6">
-                        <!-- Review Item 1 -->
-                        <div class="border-b border-gray-100 dark:border-gray-800 pb-6">
-                            <div class="flex items-start justify-between mb-2">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 rounded-full bg-gray-200 bg-cover bg-center"
-                                        data-alt="Avatar of user Minh Anh"
-                                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC6Vs_FtNPOa0g-TT8Upy_j9zISupXfkM_hUZKwUyyZpPJyLvmHqxMOf_trea1mMDIjcy-Ly-Lo6L4av4V9mPHqmxS0-h0UmgVBRDWIyUCsnvuoXa_vPv42z-9s8hiV-EyPKk5_up6WuLXubdBmAoWMfqno0At6wR-lp521n19SGFD8QvHT-qvWGLr-rThyjgJImMJEii9dx-HEjdC5E30iOXVP-CPzo-N-0RYKFn7SCinWEx9VMevL6ecKsqjqqk_6HFlSqs4e63Oi');">
-                                    </div>
-                                    <div>
-                                        <h4 class="font-bold text-[#0d141b] dark:text-white">Minh Anh</h4>
-                                        <p class="text-xs text-gray-500">Tháng 10, 2023</p>
-                                    </div>
-                                    <span
-                                        class="hidden sm:flex px-2 py-0.5 bg-green-50 text-green-600 dark:bg-green-900/20 dark:text-green-400 text-[10px] font-bold uppercase tracking-wide rounded ml-2">Người
-                                        thuê đã xác thực</span>
-                                </div>
-                                <div class="flex text-yellow-400 text-sm">
-                                    <span class="material-symbols-outlined fill-current text-lg">star</span>
-                                    <span class="material-symbols-outlined fill-current text-lg">star</span>
-                                    <span class="material-symbols-outlined fill-current text-lg">star</span>
-                                    <span class="material-symbols-outlined fill-current text-lg">star</span>
-                                    <span class="material-symbols-outlined fill-current text-lg">star</span>
-                                </div>
-                            </div>
-                            <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
-                                Văn phòng rất đẹp, ánh sáng tự nhiên tuyệt vời giúp nhân viên làm việc hiệu quả hơn. Vị
-                                trí trung tâm thuận tiện đi lại gặp khách hàng. Điểm trừ duy nhất là giờ cao điểm thang
-                                máy hơi đông một chút.
-                            </p>
-                        </div>
-                        <!-- Review Item 2 -->
-                        <div class="border-b border-gray-100 dark:border-gray-800 pb-6">
-                            <div class="flex items-start justify-between mb-2">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 rounded-full bg-gray-200 bg-cover bg-center"
-                                        data-alt="Avatar of user John Doe"
-                                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDtKKJbS83QweMKhbYfox8W4foq7AmzfvBUv6MBk9CK6Smuit1HqVLs8vShPRBW9YfU5QTa__edxNchIS50EgjWXqgcx7ACzs7oVU8JMAiWfBBCAH-yjiP1Xas-O51mkn-JvyyKDCima5SE0TFEsLCd2QtDCES3vLZSbjCphUZtJrVOD4ba2VQyZY87KankrBuEy2-IWvWKiBQ79Db9ZRXp9gs3LMj3qTwSfBLxWknfjmSVb4dGGdNI1W8-yFZShWZV1inaIYNyplET');">
-                                    </div>
-                                    <div>
-                                        <h4 class="font-bold text-[#0d141b] dark:text-white">John Doe</h4>
-                                        <p class="text-xs text-gray-500">Tháng 8, 2023</p>
-                                    </div>
-                                </div>
-                                <div class="flex text-yellow-400 text-sm">
-                                    <span class="material-symbols-outlined fill-current text-lg">star</span>
-                                    <span class="material-symbols-outlined fill-current text-lg">star</span>
-                                    <span class="material-symbols-outlined fill-current text-lg">star</span>
-                                    <span class="material-symbols-outlined fill-current text-lg">star</span>
-                                    <span
-                                        class="material-symbols-outlined fill-current text-gray-300 text-lg">star</span>
-                                </div>
-                            </div>
-                            <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
-                                Good management team, very responsive. The parking area is spacious. Highly recommend
-                                for startups.
-                            </p>
-                        </div>
-                    </div>
-                    <button
-                        class="w-full mt-4 py-3 text-sm font-bold text-gray-500 hover:text-[#0d141b] dark:hover:text-white transition-colors border border-dashed border-gray-300 dark:border-gray-700 rounded-lg">
-                        Xem thêm 22 đánh giá khác
-                    </button>
-                </div>
+                
             </div>
             <!-- Right Column: Sticky Sidebar -->
             <div class="lg:w-[380px] shrink-0">
@@ -417,8 +283,7 @@
                         <div class="mb-6">
                             <p class="text-sm text-gray-500 dark:text-gray-400 font-medium mb-1">Giá thuê hàng tháng</p>
                             <div class="flex items-baseline gap-1">
-                                <span class="text-3xl font-black text-primary tracking-tight">25.000.000</span>
-                                <span class="text-lg font-bold text-gray-700 dark:text-gray-300">VNĐ</span>
+                                <span id="detail-price" class="text-3xl font-black text-primary tracking-tight"></span>
                             </div>
                         </div>
                         <!-- Agent Info -->
@@ -429,14 +294,14 @@
                                 style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAR-9ElLXCG2mnlPSLaU-diNcz9jqKUPYCKz7Q_nIM9N5BN2_VEu-E1LPCrBbyuHUpyHqC0gahu0UIo3t3RYCiM0NSMzzPlWLwLJKIx0_Q2uDC9PPX4kUNDTrHIMqLvYc2IRHPqaLqBXcxez0Dm0pgSwF_cCS3MWMAZuS9BQbAE5CqT04NiVRpe3mayxNKGi5mE17kk9bezgOu-pfO-4MW5VA-rIqkHCzPKDquVYLFVM_LtvS9u5wnwl5pW5RGHD9qXxchrDOSW4bgx');">
                             </div>
                             <div class="flex-1 min-w-0">
-                                <h4 class="font-bold text-[#0d141b] dark:text-white text-base truncate">Sarah Nguyễn
+                                <h4 id="detail-seller" class="font-bold text-[#0d141b] dark:text-white text-base truncate">
                                 </h4>
                                 <p class="text-xs text-gray-500 dark:text-gray-400 truncate">Senior Agent - RentHub
                                     Premier</p>
                                 <div
                                     class="flex items-center gap-1 text-xs text-yellow-600 dark:text-yellow-500 font-medium mt-1">
-                                    <span class="material-symbols-outlined text-sm">star</span>
-                                    4.9 (120 deals)
+                                    <span id="detail-rating" class="material-symbols-outlined text-sm">star</span>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -479,96 +344,67 @@
         </div>
     </footer>
     <script src="asset/js/state.js"></script>
-<script src="asset/js/api.js"></script>
+    <script src="asset/js/api.js"></script>
 
-<script>
-    document.addEventListener("DOMContentLoaded", async () => {
-        // 1. Lấy ID từ URL
-        const params = new URLSearchParams(window.location.search);
-        const id = params.get('id');
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get("id");
 
-        if (!id) return; // Nếu không có ID thì giữ nguyên hoặc redirect
-
-        // 2. Lấy dữ liệu (Đảm bảo gọi fetchData để có MOCK_DATA)
-        const data = await fetchData();
-        const item = data.find(p => p.id === id);
-
-        if (!item) {
-            alert("Không tìm thấy mặt bằng!");
-            return;
-        }
-
-        // 3. Binding dữ liệu vào HTML (Sử dụng DOM manipulation)
-        
-        // Title & Address
-        document.querySelector("h1").textContent = item.title;
-        document.querySelector("h1 + p").innerHTML = `<span class="material-symbols-outlined text-xl">location_on</span> ${item.address}`;
-        
-        // Breadcrumb (Tên cuối cùng)
-        const breadcrumbs = document.querySelectorAll("nav a");
-        if(breadcrumbs.length > 0) {
-            document.querySelector("nav span:last-child").textContent = item.title;
-        }
-
-        // Stats (Diện tích, Loại phòng...) - Tìm theo icon hoặc vị trí
-        // Cách an toàn nhất là tìm element chứa text "Diện tích" rồi lấy sibling
-        const stats = document.querySelectorAll(".bg-surface-light .flex.items-center.gap-3");
-        if(stats.length >= 4) {
-            stats[0].querySelector("p.text-lg").textContent = `${item.area} m²`;
-            stats[1].querySelector("p.text-lg").textContent = item.type === 'office' ? "Văn phòng" : "Kinh doanh";
-            // Các field khác nếu có trong data
-        }
-
-        // Giá tiền (Sidebar)
-        const priceEl = document.querySelector(".text-3xl.font-black.text-primary");
-        if(priceEl) priceEl.textContent = new Intl.NumberFormat('vi-VN').format(item.price);
-
-        // Ảnh (Main Image & Thumbnails)
-        // Set ảnh background cho div chính
-        const mainImgDiv = document.querySelector("[style*='background-image']");
-        if(mainImgDiv) mainImgDiv.style.backgroundImage = `url('${item.image}')`;
-        
-        // Mô tả
-        const descDiv = document.querySelector(".prose");
-        if(descDiv) {
-            descDiv.innerHTML = `<p>${item.description}</p>`;
-        }
-
-        // Reviews (Render động từ mảng reviews)
-        const reviewContainer = document.querySelector("#reviews .space-y-6");
-        const reviewSummary = document.querySelector("#reviews span.text-5xl"); // 4.8
-        
-        if (reviewContainer && item.reviews) {
-            if(reviewSummary) reviewSummary.textContent = item.rating;
-            
-            reviewContainer.innerHTML = ""; // Xóa review mẫu
-            
-            if(item.reviews.length === 0) {
-                reviewContainer.innerHTML = "<p class='text-gray-500 italic'>Chưa có đánh giá nào.</p>";
-            } else {
-                item.reviews.forEach(rv => {
-                    const rvHtml = `
-                        <div class="border-b border-gray-100 dark:border-gray-800 pb-6">
-                            <div class="flex items-start justify-between mb-2">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 rounded-full bg-gray-200 bg-cover bg-center" style="background-image: url('${rv.avatar}');"></div>
-                                    <div>
-                                        <h4 class="font-bold text-[#0d141b] dark:text-white">${rv.user}</h4>
-                                        <div class="flex text-yellow-400 text-xs">
-                                            ${'★'.repeat(rv.rating)}${'☆'.repeat(5-rv.rating)}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">${rv.comment}</p>
-                        </div>
-                    `;
-                    reviewContainer.innerHTML += rvHtml;
-                });
+            if (!id) {
+                document.body.innerHTML = "<h2>Thiếu ID tin đăng</h2>";
+                return;
             }
-        }
-    });
-</script>
+
+            await fetchData();
+
+            const item = window.rawData.find(x => String(x.id) === String(id));
+
+            if (!item) {
+                document.body.innerHTML = "<h2>Không tìm thấy tin đăng</h2>";
+                return;
+            }
+
+            document.getElementById("detail-title").textContent = item.title;
+
+            document.getElementById("detail-price").textContent =
+                item.price_string || "Liên hệ";
+
+            document.getElementById("detail-address").textContent =
+                `${item.street}, ${item.ward}, ${item.district}, ${item.region}`;
+
+            document.getElementById("detail-area").textContent =
+                `${item.area_m2} m²`;
+
+            document.getElementById("detail-seller").textContent =
+                item.seller || "Đang cập nhật";
+
+            document.getElementById("detail-date").textContent =
+                item.date || "";
+
+            document.getElementById("detail-category").textContent =
+                item.category;
+
+            document.getElementById("detail-group").textContent =
+                item.group;
+
+            document.getElementById("detail-rating").textContent =
+                item.rating ? `${item.rating} ⭐` : "Chưa có";
+
+            // Ảnh
+            document.getElementById("main-image").style.backgroundImage =
+                `url('${item.image}')`;
+
+            // Map
+            document.getElementById("detail-map").src =
+                `https://www.google.com/maps?q=${item.lat},${item.lng}&output=embed`;
+
+        });
+    </script>
+
+
+
+
 </body>
 
 </html>

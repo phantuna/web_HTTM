@@ -1,18 +1,25 @@
-const API_URL = "..";
+const API_URL = "";
 
 function normalizeChoTotItem(item) {
   return {
-    id: item.ad_id,
-    title: "Mặt bằng cho thuê", // tạm, sau có thể nâng cấp
-    image: `https://picsum.photos/600/400?random=${item.ad_id}`,
+    id: item.id || item.ad_id,
+    title: item.title,
+    image: item.image,
     price: Number(item.price) || 0,
-    area: Number(item.area) || 0,
-    district: item.district || "",
-    ward: item.ward || "",
+    price_string: item.price_string,
+    area_m2: Number(item.area_m2) || 0,
+    district: item.district,
+    ward: item.ward,
+    street: item.street,
+    seller: item.seller,
     rating: item.rating ? Number(item.rating) : null,
-    type: "retail" // hoặc office, tạm hardcode
+    lat: item.lat,
+    lng: item.lng,
+    date: item.date,
+    category: item.category
   };
 }
+
 
 async function fetchData() {
   try {
@@ -24,12 +31,12 @@ async function fetchData() {
     window.rawData = normalized;
     window.filteredData = [...normalized];
 
-    window.currentPage = 1;
-    renderPage();
+   return normalized;
    
 
   } catch (err) {
     console.error("Lỗi gọi API:", err);
+    return [];
   }
 }
 

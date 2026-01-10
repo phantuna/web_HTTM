@@ -334,9 +334,7 @@
                     Xem tất cả <span class="material-symbols-outlined text-sm">arrow_forward</span>
                 </a>
             </div>
-            <div
-                id="listing"
-                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div id="listing" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             </div>
             <div class="flex justify-center mt-10">
                 <div class="pagination flex gap-2"></div>
@@ -439,44 +437,39 @@
     <script src="asset/js/filter.js"></script>
     <script src="asset/js/main.js"></script>
 
-<script>
-    async function fetchData() {
-    try {
-        const res = await fetch(API_URL);
-        const data = await res.json();
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            await fetchData();
 
-        rawData = data;
-        filteredData = [...rawData];
+            window.PAGE_SIZE = 6;
+            window.currentPage = 1;
 
-        currentPage = 1;
-        renderPage();
-    } catch (err) {
-        console.error("Lỗi gọi API:", err);
-    }
-    }
-document.addEventListener("DOMContentLoaded", () => {
-        // Nút tìm kiếm chính
-        const searchBtn = document.querySelector("button[type='button'].bg-primary"); // Selector nút Tìm
-        const input = document.querySelector("input[placeholder*='Nhập quận']"); // Selector ô input
-
-        if (searchBtn && input) {
-            searchBtn.addEventListener("click", () => {
-                const keyword = input.value.trim();
-                // Chuyển hướng sang trang timkiem.html kèm keyword
-                window.location.href = `timkiem.html?keyword=${encodeURIComponent(keyword)}`;
-            });
-        }
-        
-        // Load data cho phần "Mặt bằng nổi bật" ở trang chủ
-        fetchData().then(data => {
-             // Lấy 6 item đầu tiên
-             window.rawData = data;
-             window.filteredData = data;
-             window.PAGE_SIZE = 6;
-             renderPage(); 
+            renderPage();
         });
-    });
-</script>
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // Nút tìm kiếm chính
+            const searchBtn = document.querySelector("button[type='button'].bg-primary"); // Selector nút Tìm
+            const input = document.querySelector("input[placeholder*='Nhập quận']"); // Selector ô input
+
+            if (searchBtn && input) {
+                searchBtn.addEventListener("click", () => {
+                    const keyword = input.value.trim();
+                    // Chuyển hướng sang trang timkiem.html kèm keyword
+                    window.location.href = `timkiem.html?keyword=${encodeURIComponent(keyword)}`;
+                });
+            }
+
+            // Load data cho phần "Mặt bằng nổi bật" ở trang chủ
+            fetchData().then(data => {
+                // Lấy 6 item đầu tiên
+                window.rawData = data;
+                window.filteredData = data;
+                window.PAGE_SIZE = 6;
+                renderPage();
+            });
+        });
+    </script>
 
 </body>
 

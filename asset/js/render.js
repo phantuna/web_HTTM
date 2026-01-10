@@ -1,7 +1,7 @@
 function renderList(data) {
   const container = document.getElementById("listing");
   if (!container) return;
-  
+
   container.innerHTML = "";
 
   if (data.length === 0) {
@@ -16,42 +16,44 @@ function renderList(data) {
   data.forEach(item => {
     // Format giá tiền
     const formattedPrice = new Intl.NumberFormat('vi-VN').format(item.price);
-    
+
     const card = document.createElement("a");
     // Link tới trang chi tiết với ID sản phẩm
     card.href = `chitet.html?id=${item.id}`;
     card.className = "group flex flex-col bg-white dark:bg-card-dark rounded-xl border border-border-light dark:border-border-dark overflow-hidden hover:shadow-lg transition-shadow cursor-pointer";
 
     card.innerHTML = `
-      <div class="relative aspect-[4/3] overflow-hidden bg-gray-100">
-        <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-        <div class="absolute top-2 right-2 bg-white/90 backdrop-blur dark:bg-black/50 px-2 py-1 rounded text-xs font-bold flex items-center gap-1">
-          <span class="material-symbols-outlined text-yellow-400 text-sm">star</span> ${item.rating}
+    <div class="relative aspect-[4/3] overflow-hidden bg-gray-100">
+      <img src="${item.image}" alt="${item.title}"
+        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+    </div>
+
+    <div class="p-4 flex flex-col flex-1">
+      <h3 class="font-bold text-slate-900 dark:text-white mb-1 line-clamp-2">
+        ${item.title}
+      </h3>
+
+      <p class="text-sm text-slate-500 flex items-center gap-1 truncate">
+        <span class="material-symbols-outlined text-sm">location_on</span>
+        ${item.street}, ${item.ward}, ${item.district}
+      </p>
+
+      <div class="mt-auto flex items-center justify-between border-t pt-3">
+        <div>
+          <p class="text-xs text-slate-400">Giá</p>
+          <p class="text-lg font-bold text-primary">
+            ${item.price_string || "Liên hệ"}
+          </p>
+        </div>
+        <div class="text-right">
+          <p class="text-xs text-slate-400">Diện tích</p>
+          <p class="text-sm font-bold">${item.area_m2} m²</p>
         </div>
       </div>
-      <div class="p-4 flex flex-col flex-1">
-        <div class="mb-2">
-          <span class="text-xs font-bold text-primary uppercase tracking-wider bg-blue-50 dark:bg-blue-900/20 px-2 py-1 rounded">
-            ${item.type === 'office' ? 'Văn phòng' : item.type === 'retail' ? 'Cửa hàng' : item.type === 'apartment' ? 'Căn hộ' : 'Kho xưởng'}
-          </span>
-        </div>
-        <h3 class="font-bold text-slate-900 dark:text-white mb-1 line-clamp-2 min-h-[3rem]">${item.title}</h3>
-        <p class="text-sm text-slate-500 dark:text-slate-400 mb-3 flex items-center gap-1 truncate">
-          <span class="material-symbols-outlined text-sm">location_on</span>
-          ${item.district}, TP.HCM
-        </p>
-        <div class="mt-auto flex items-center justify-between border-t border-border-light dark:border-border-dark pt-3">
-          <div>
-            <p class="text-xs text-slate-400">Giá thuê</p>
-            <p class="text-lg font-bold text-primary">${formattedPrice} <span class="text-xs text-slate-500">vnđ/th</span></p>
-          </div>
-          <div class="text-right">
-            <p class="text-xs text-slate-400">Diện tích</p>
-            <p class="text-sm font-bold text-slate-700 dark:text-slate-300">${item.area} m²</p>
-          </div>
-        </div>
-      </div>
-    `;
+    </div>
+  `;
+
+    console.log("ITEM ID:", item.id);
 
     container.appendChild(card);
   });
@@ -121,3 +123,16 @@ function rememberBtn(text, enabled, action) {
   document.querySelector(".pagination").appendChild(btn);
 }
 
+function renderItem(item) {
+  return `
+    <a href="chitet.html?id=${item.ad_id}" class="block bg-white rounded-xl shadow hover:shadow-lg transition">
+      <img src="${item.image}" class="w-full h-48 object-cover rounded-t-xl">
+      <div class="p-4">
+        <h3 class="font-bold line-clamp-2">${item.title}</h3>
+        <p class="text-primary font-bold">
+          ${item.price_string || "Liên hệ"}
+        </p>
+      </div>
+    </a>
+  `;
+}
